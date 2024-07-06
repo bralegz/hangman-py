@@ -1,73 +1,9 @@
 import random
+import hangman_art
+import words
 
-stages = [
-    """
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-""",
-    """
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-""",
-    """
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-""",
-    """
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========""",
-    """
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-""",
-    """
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-""",
-    """
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-""",
-]
-
-word_list = ["aardvark", "baboon", "camel"]
-chosen_word = random.choice(word_list)
-
+chosen_word = random.choice(words.word_list)
+print(hangman_art.logo)
 print(f"Pssst, the solution is {chosen_word}.")
 
 
@@ -78,6 +14,7 @@ for letter in chosen_word:
 
 # keeping track of the lives
 lives_left = 6
+
 
 while "_" in display:
     # keep track of new spaces filled
@@ -99,7 +36,7 @@ while "_" in display:
             print(display)
         else:
             lives_left -= 1
-            print(stages[lives_left])
+            print(hangman_art.stages[lives_left])
     # Get out of the loop if we run out of lives
     else:
         break
