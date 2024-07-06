@@ -1,10 +1,10 @@
 import random
-import hangman_art
-import words
+from hangman_art import stages, logo
+from words import word_list
 
-chosen_word = random.choice(words.word_list)
-print(hangman_art.logo)
-print(f"Pssst, the solution is {chosen_word}.")
+chosen_word = random.choice(word_list)
+print(logo)
+# print(f"Pssst, the solution is {chosen_word}.")
 
 
 # Fill with blank spaces
@@ -24,6 +24,10 @@ while "_" in display:
     if lives_left > 0:
         # Promt the user to guess a letter
         guess = input("Guess a letter: ").lower()
+        
+        if guess in display:
+            print("You already guessed this letter. Choose another one.")
+            continue
 
         # replace blank spaces with guessed letter
         for index, letter in enumerate(chosen_word):
@@ -36,7 +40,7 @@ while "_" in display:
             print(display)
         else:
             lives_left -= 1
-            print(hangman_art.stages[lives_left])
+            print(stages[lives_left])
     # Get out of the loop if we run out of lives
     else:
         break
